@@ -22,11 +22,11 @@ export default class Navbars extends Component {
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to="/entertainment">Entertainment</Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to="/general">General</Link>
-        </li>
+        </li> */}
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/">Health</Link>
+          <Link className="nav-link active" aria-current="page" to="/health">Health</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to="/science">Science</Link>

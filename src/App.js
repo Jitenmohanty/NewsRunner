@@ -44,7 +44,7 @@ export default class App extends Component {
               />
             }
             />
-          <Route exact path="/general"
+          {/* <Route exact path="/general"
             element=
             {
               <News
@@ -54,7 +54,7 @@ export default class App extends Component {
                 category="general"
               />
             }
-            />
+            /> */}
           <Route exact path="/health"
             element=
             {<News key="health" pageSize={9} country="in" category="health" />}
