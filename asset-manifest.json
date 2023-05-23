@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/NewsRunner/static/css/main.31d6cfe0.css",
+    "main.js": "/NewsRunner/static/js/main.1902c2dd.js",
+    "static/js/787.ce5b3c27.chunk.js": "/NewsRunner/static/js/787.ce5b3c27.chunk.js",
+    "index.html": "/NewsRunner/index.html",
+    "main.1902c2dd.js.map": "/NewsRunner/static/js/main.1902c2dd.js.map",
+    "787.ce5b3c27.chunk.js.map": "/NewsRunner/static/js/787.ce5b3c27.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.1902c2dd.js"
+  ]
+}
