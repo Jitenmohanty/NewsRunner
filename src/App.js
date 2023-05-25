@@ -1,31 +1,26 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Navbars from "./Components/Navbars";
 import News from "./Components/News";
 import LoadingBar from "react-top-loading-bar";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-export default class App extends Component {
-  apiKey=process.env.REACT_APP_NEWS_API;
-  state={
-    progress:0
-  }
-  setProgress= (progress)=>{
-    this.setState({progress:progress})
-  }
-  render() {
+ const  App = ()=>{
+ const apiKey=process.env.REACT_APP_NEWS_API ;
+  const[Progress,setProgress] = useState(0);
+
     return (
       <Router>
         <Navbars />
         <LoadingBar
         color='#f11946'
-        progress={this.state.progress} 
+        progress={Progress} 
       />
         <Routes>
           <Route exact path="/"
             element=
             {
-              <News setProgress={this.setProgress}  apiKey={this.apiKey}
+              <News setProgress={setProgress}  apiKey={apiKey}
                 key="general"
                 pageSize={9}
                 country="in"
@@ -37,7 +32,7 @@ export default class App extends Component {
           <Route exact path="/business"
             element=
             {
-              <News setProgress={this.setProgress} apiKey={this.apiKey} 
+              <News setProgress={setProgress} apiKey={apiKey} 
                 key="business"
                 pageSize={9}
                 country="in"
@@ -48,7 +43,7 @@ export default class App extends Component {
           <Route exact path="/entertainment"
             element=
             {
-              <News setProgress={this.setProgress}  apiKey={this.apiKey}
+              <News setProgress={ setProgress}  apiKey={apiKey}
                 key="entertainment"
                 pageSize={9}
                 country="in"
@@ -59,7 +54,7 @@ export default class App extends Component {
           <Route exact path="/general"
             element=
             {
-              <News setProgress={this.setProgress} apiKey={this.apiKey} 
+              <News setProgress={ setProgress} apiKey={apiKey} 
                 key="general"
                 pageSize={9}
                 country="in"
@@ -69,12 +64,12 @@ export default class App extends Component {
             />
           <Route exact path="/health"
             element=
-            {<News setProgress={this.setProgress} apiKey={this.apiKey}  key="health" pageSize={9} country="in" category="health" />}
+            {<News setProgress={ setProgress} apiKey={apiKey}  key="health" pageSize={9} country="in" category="health" />}
           />
           <Route exact path="/science"
             element=
             {
-              <News setProgress={this.setProgress} apiKey={this.apiKey}
+              <News setProgress={ setProgress} apiKey={apiKey}
                 key="science"
                 pageSize={9}
                 country="in"
@@ -84,12 +79,12 @@ export default class App extends Component {
             />
           <Route exact path="/sports"
             element=
-            {<News setProgress={this.setProgress}  apiKey={this.apiKey} key="sports" pageSize={9} country="in" category="sports" />}
+            {<News setProgress={ setProgress}  apiKey={apiKey} key="sports" pageSize={9} country="in" category="sports" />}
             />
           <Route exact path="/technology"
             element=
             {
-              <News setProgress={this.setProgress}  apiKey={this.apiKey}
+              <News setProgress={ setProgress}  apiKey={apiKey}
                 key="technology"
                 pageSize={9}
                 country="in"
@@ -100,5 +95,6 @@ export default class App extends Component {
         </Routes>
       </Router>
     );
-  }
 }
+
+export default App;
