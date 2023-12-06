@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { collection, deleteDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { storage } from "../firebase";
-
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFavlist, setFavlist } from "../redux/Reducers/userSlice";
 
 const FavoruiteList = (props) => {
-  const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
-
- 
+  const dispatch = useDispatch();
+  const favlist = useSelector(selectFavlist)
 
   useEffect(() => {
     const getFavlist = async () => {
@@ -18,14 +18,12 @@ const FavoruiteList = (props) => {
         id: doc.id,
         ...doc.data(),
       }));
-      setEmployees(employee);
+      dispatch(setFavlist(employee))
       setLoading(false);
     };
     getFavlist();
-  }, []);
-
+  }, [dispatch,favlist]);
   
-
   return (
     <>
       <h1
@@ -37,7 +35,7 @@ const FavoruiteList = (props) => {
       {loading && <Spinner />}
       <div className="container">
         <div className="row">
-          {employees?.map((element) => {
+          {favlist?.map((element) => {
             return (
               <div className="col-md-4" key={element.url}>
                 <NewsItem

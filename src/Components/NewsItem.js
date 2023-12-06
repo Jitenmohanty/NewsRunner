@@ -4,9 +4,12 @@ import { storage } from "../firebase";
 import {addDoc, collection, deleteDoc, doc} from 'firebase/firestore'
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from "react-redux";
+import { setFavlist } from "../redux/Reducers/userSlice";
 
 const NewsItem = (props) => {
   let { tittle, description, imgUrl, newsUrl, author, date, source,element ,favtrue,id} = props;
+  const dispatch = useDispatch();
   const handleFavlist = async()=>{
     try {
       await addDoc(collection(storage,"articles"),{
@@ -27,11 +30,9 @@ const NewsItem = (props) => {
   }
 
   const removeFavlist = async(id)=>{
-    console.log(id)
     try {
-      // await deleteDoc(doc(storage, "articles",id));
-      // toast.success("Post removed from the favorite list.");
       await deleteDoc(doc(storage, 'articles',id));
+      dispatch(setFavlist())
       toast.success('Post removed from the favorite list.');
     } catch (error) {
       toast.error("Post not removed. Error occurred.");

@@ -4,6 +4,7 @@ const initialState = {
   name: "",
   email: "",
   photo: "",
+  favlist:null
 };
 
 const userSlice = createSlice({
@@ -19,14 +20,18 @@ const userSlice = createSlice({
       state.name = null;
       state.email = null;
       state.photo = null;
+    },
+    setFavlist:(state,action)=>{
+      state.favlist = action.payload
     }
   },
 });
 
-export const { setSignOutState, setUserLoginDetails } = userSlice.actions;
+export const { setSignOutState, setUserLoginDetails,setFavlist } = userSlice.actions;
 
 export const selectUserName = (state) => state.user.name;
 export const selectUserEmail = (state) => state.user.email;
 export const selectUserPhoto = (state) => state.user.photo;
+export const selectFavlist = (state) => state.user.favlist;
 
 export default userSlice.reducer;
